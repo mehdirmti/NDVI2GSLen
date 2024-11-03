@@ -31,10 +31,9 @@ In the following, the calculation with the LFD-NDVI method is described in detai
 
 In the first step, a logistic function is fitted to the data (Fig. 1b):
 
-Equation 1:
 $$ 
 \begin{align}
-y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}
+y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}  .............................. (1)
 \end{align}
 $$                           
 
