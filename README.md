@@ -31,24 +31,14 @@ In the following, the calculation with the LFD-NDVI method is described in detai
 
 In the first step, a logistic function is fitted to the data (Fig. 1b):
 
-  <script>
-  MathJax = {
-    tex: {
-      tags: 'ams'  // should be 'ams', 'none', or 'all'
-    }
-  };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  
-
-
+Equation 1:
 $$ 
 \begin{align}
 y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}
 \end{align}
 $$                           
 
-where $y(t)$ is the rescaled cumulative NDVI on day $t$ of the year, $t$ is the rescaled time (day of the year), and the model coefficients are a, b, c, and d. Using this fitted function, we obtained the smoothed curve of the rescaled cumulative NDVI data for all days of the year (t = 1:365 or 366, being scaled to 0 and 1). Third, we determined the curvature of the data, $k(t)$, for each t using the first $y′(t)$ and second $y′′(t)$ derivatives of the fitted logistic function:
+where $y(t)$ is the rescaled cumulative NDVI on the day $t$ of the year, $t$ is the rescaled time (day of the year), and the model coefficients are a, b, c, and d. Using this fitted function, we obtained the smoothed curve of the rescaled cumulative NDVI data for all days of the year (t = 1:365 or 366, being scaled to 0 and 1). Third, we determined the curvature of the data, $k(t)$, for each t using the first $y′(t)$ and second $y′′(t)$ derivatives of the fitted logistic function:
 
 Equation 2:    $k(t)=\frac{|y^{\prime\prime} (t)|}{{(1+y^{\prime} (t))}^{1.5}}$
 
