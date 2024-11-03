@@ -33,7 +33,7 @@ In the first step, a logistic function is fitted to the data (Fig. 1b):
 
 $$ 
 \begin{align}
-y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}  \color{white}{\text{..............................}}   (1)
+y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}  \color{white}{\text{..............................}} \color{black}{\text{(1)}}
 \end{align}
 $$                           
 
