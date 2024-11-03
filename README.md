@@ -41,9 +41,9 @@ Plotting k(t) versus t typically shows two maxima separated by a minimum. The ti
 
 For the second part, a first-order polynomial function was fitted by simply using two points of maximum curvature and their respective rescaled cumulative NDVI values, plus an additional point in between. However, we used the sequential linear approximation method described by Dathe et al.55 to identify the linear part of the rescaled cumulative NDVI curve before the first and after the second curvature maxims. The method consists of calculating linear regressions over a consecutive number of points before the first and after the second curvature maximum. The dependence of R2 on the number of data points was used to determine the number of points to be included in the regression. In this analysis, an R2 value of 0.95 was used as the critical value to determine the linear parts of winter- and fall-dormant. When such an R2 value was not obtained from a larger number of data, we simply used the first and last three points to draw the line in the winter- and fall-dormant periods. Next, we determined the equation of the bisector of the obtuse angle between the regression equations of the winter-dormant and active growth parts (Eq. (3)) and the fall-dormant and active growth parts (Eq. (4)) by computing the angle between two lines.
 
-Equation 3:    $y(t)={a}_{wa}t+{c}_{wa}$
+Equation 3:    $y(t) = a_{wa}t + c_{wa}$ 
 
-Equation 4:    $y(t)={a}_{fa}t+{c}_{fa}$
+Equation 4:    $y(t) = a_{fa}t + c_{fa}$
 
 where $a_{wa}$ and $c_{wa}$ correspond to the slope and intercept of the line bisecting the lines of winter dormancy and active growth parts, and $a_{fa}$ and $c_{fa}$ correspond to the slope and intercept of the line bisecting the lines of fall dormancy and active growth parts. After determining the equations for the bisecting lines, the intersection between them and the fitted logistic function determines OG and/or OD (Fig. 1d). Mathematically, OG and OD are calculated by solving the following equations for $t$:
 
