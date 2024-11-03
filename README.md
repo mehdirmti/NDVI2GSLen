@@ -37,6 +37,16 @@ y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}
 \end{split}
 $$                           
 
+
+$$ \label{eq:y-mgf-s2}
+\begin{align}
+M_y(t) &= \exp \left[ t^\mathrm{T} b \right] \cdot M_x(At) \\
+&= \exp \left[ t^\mathrm{T} b \right] \cdot \exp \left[ t^\mathrm{T} A \mu + \frac{1}{2} t^\mathrm{T} A \Sigma A^\mathrm{T} t \right] \\
+&= \exp \left[ t^\mathrm{T} \left( A \mu + b \right) + \frac{1}{2} t^\mathrm{T} A \Sigma A^\mathrm{T} t \right] \; .
+\end{align}
+$$
+
+
 where y(t) is the rescaled cumulative NDVI on day t of the year, t is the rescaled time (day of the year), and the model coefficients are a, b, c, and d. Using this fitted function, we obtained the smoothed curve of the rescaled cumulative NDVI data for all days of the year (t = 1:365 or 366, being scaled to 0 and 1). Third, we determined the curvature of the data, k(t), for each t using the first y′(t) and second y′′(t) derivatives of the fitted logistic function:
 
 Equation 2:    $k(t)=\frac{|y^{\prime\prime} (t)|}{{(1+y^{\prime} (t))}^{1.5}}$
