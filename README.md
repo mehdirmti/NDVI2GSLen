@@ -29,23 +29,28 @@ Our introduced method, namely the [logistic function derivative of NDVI (LFD-NDV
 
 In the following, the calculation with the LFD-NDVI method is described in detail.
 
-In the first step, a logistic function is fitted to the data (Figure 1b):
+In the first step, a logistic function is fitted to the data (Fig. 1b):
 
-$y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}$                              (1)
+Equation 1:    $y(t)=a+\frac{b}{1+\exp (-\frac{t-c}{d})}$                              
 
 where y(t) is the rescaled cumulative NDVI on day t of the year, t is the rescaled time (day of the year), and the model coefficients are a, b, c, and d. Using this fitted function, we obtained the smoothed curve of the rescaled cumulative NDVI data for all days of the year (t = 1:365 or 366, being scaled to 0 and 1). Third, we determined the curvature of the data, k(t), for each t using the first y′(t) and second y′′(t) derivatives of the fitted logistic function:
 
-(2)
-Plotting k(t) versus t typically shows two maxima separated by a minimum. The times at which the maxima occur allow the logistic curve to be divided into three parts with nearly linear behavior (Fig. 9c). The first part occurs during the winter and early spring before the first curvature maximum in the data; we refer to this part as winter dormant period. The second part occurs between the first and second curvature maxima in the data; we refer to this part as the active growth period. Finally, the third part occurs during the late summer and falls after the second curvature maximum in the data; we refer to this part as the fall dormant period.
+Equation 2:    $k(t)=\frac{|y^{\prime\prime} (t)|}{{(1+y^{\prime} (t))}^{1.5}}$
+
+Plotting k(t) versus t typically shows two maxima separated by a minimum. The times at which the maxima occur allow the logistic curve to be divided into three parts with nearly linear behavior (Fig. 1c). The first part occurs during the winter and early spring before the first curvature maximum in the data; we refer to this part as winter dormant period. The second part occurs between the first and second curvature maxima in the data; we refer to this part as the active growth period. Finally, the third part occurs during the late summer and falls after the second curvature maximum in the data; we refer to this part as the fall dormant period.
 
 For the second part, a first-order polynomial function was fitted by simply using two points of maximum curvature and their respective rescaled cumulative NDVI values, plus an additional point in between. However, we used the sequential linear approximation method described by Dathe et al.55 to identify the linear part of the rescaled cumulative NDVI curve before the first and after the second curvature maxims. The method consists of calculating linear regressions over a consecutive number of points before the first and after the second curvature maximum. The dependence of R2 on the number of data points was used to determine the number of points to be included in the regression. In this analysis, an R2 value of 0.95 was used as the critical value to determine the linear parts of winter- and fall-dormant. When such an R2 value was not obtained from a larger number of data, we simply used the first and last three points to draw the line in the winter- and fall-dormant periods. Next, we determined the equation of the bisector of the obtuse angle between the regression equations of the winter-dormant and active growth parts (Eq. (3)) and the fall-dormant and active growth parts (Eq. (4)) by computing the angle between two lines.
 
-(3)
-(4)
-where awa and cwa correspond to the slope and intercept of the line bisecting the lines of winter dormancy and active growth parts, and afa and cfa correspond to the slope and intercept of the line bisecting the lines of fall dormancy and active growth parts. After determining the equations for the bisecting lines, the intersection between them and the fitted logistic function determines OG and/or OD (Fig. 9d). Mathematically, OG and OD are calculated by solving the following equations for t:
+Equation 3:    ${{{{{\rm{y}}}}}}({{{{{\rm{t}}}}}})={a}_{{{{{{\rm{wa}}}}}}}t+{c}_{{{{{{\rm{wa}}}}}}}$
 
-(5)
-(6)
+Equation 4:    ${{{{{\rm{y}}}}}}({{{{{\rm{t}}}}}})={a}_{{{{{{\rm{fa}}}}}}}t+{c}_{{{{{{\rm{fa}}}}}}}$
+
+where awa and cwa correspond to the slope and intercept of the line bisecting the lines of winter dormancy and active growth parts, and afa and cfa correspond to the slope and intercept of the line bisecting the lines of fall dormancy and active growth parts. After determining the equations for the bisecting lines, the intersection between them and the fitted logistic function determines OG and/or OD (Fig. 1d). Mathematically, OG and OD are calculated by solving the following equations for t:
+
+Equation 5:    ${a}_{{{{{{\rm{wa}}}}}}}t+{c}_{{{{{{\rm{wa}}}}}}}=a+\frac{b}{1+\exp (-\frac{t-c}{d})}$
+
+Equation 6:    ${a}_{{{{{{\rm{fa}}}}}}}t+{c}_{{{{{{\rm{fa}}}}}}}=a+\frac{b}{1+\exp (-\frac{t-c}{d})}$
+
 In this analysis, the root_scalar function of the Optimize sub-package of the Python package of scipy (as an alternative to the “fzero” function in MATLAB) was used to find a null of the above expression by changing the t values.
 
 Example usage of the LFD-NDVI method can be found in [(Rahmati et al., 2023)](https://www.nature.com/articles/s43247-023-00890-7#MOESM1).
