@@ -81,6 +81,9 @@ Here is a time-lapse map of the onset of greening (OG) and the onset of the dorm
 
 [![Watch the video](./Examples/screenshot_video.png)](./Examples/timelapse_map.mp4)
 
+[<img src="./Examples/timelapse_map.mp4/maxresdefault.jpg" width="50%">](./Examples/timelapse_map.mp4)
+
+
 A detailed example of the LFD-NDVI method can be found in [(Rahmati et al., 2023)](https://www.nature.com/articles/s43247-023-00890-7#MOESM1).
 
 ## Repository Structure
