@@ -41,12 +41,13 @@ from scipy import optimize
 from scipy.signal import find_peaks
 from scipy.optimize import root_scalar
 import warnings
+np.warnings = warnings
 from scipy.interpolate import interp1d
 import calendar
 from matplotlib import ticker
 import pandas as pd
 
-warnings.simplefilter('ignore', np.RankWarning)
+#warnings.simplefilter('ignore', np.RankWarning)
 warnings.filterwarnings('ignore')
 
 # determine the maximum curvature point(s) of cumulative curve
@@ -102,7 +103,12 @@ def Sequential_Linear_Approximator(t, y, portion):
     for i in range(3,len(t)):
         
         # fit a linear line over data at intial steps
-        p = np.polyfit(t[0:i], y[0:i], 1)
+        with warnings.catch_warnings():
+            warnings.filterwarnings('error')
+            try:
+                p = np.polyfit(t[0:i], y[0:i], 1)
+            except np.RankWarning:
+                print("not enough data for polyfit function [line 109]")
         
         # do predictions applying the fitted linear line 
         y_hat = []
@@ -334,10 +340,21 @@ def LFD_NDVI(DoY, ndvi, year, plotting):
         return OG, OD, OG_ndviC, OD_ndviC, Peaking_time, R
 
     # fit a linear line over data where t < t1_critical
-    p1 = np.polyfit(t[t <= t1_critical], y_hat[t <= t1_critical], 1)
+    with warnings.catch_warnings():
+        warnings.filterwarnings('error')
+        try:
+            p1 = np.polyfit(t[t <= t1_critical], y_hat[t <= t1_critical], 1)
+        except np.RankWarning:
+            print("not enough data for polyfit function [line 346]")    
+    
 
     # fit a linear line over data falling between peaks of curvature 
-    p2 = np.polyfit((t_1k, (t_1k + t_2k)/2, t_2k), (y_1k, (y_1k + y_2k)/2, y_2k), 1)
+    with warnings.catch_warnings():
+        warnings.filterwarnings('error')
+        try:
+            p2 = np.polyfit((t_1k, (t_1k + t_2k)/2, t_2k), (y_1k, (y_1k + y_2k)/2, y_2k), 1)
+        except np.RankWarning:
+            print("not enough data for polyfit function [line 355]") 
 
     # determine the criticale time at late days of year where NDVI vs time is linear        
     if len(t[t> t_2k]) > 3:
@@ -346,8 +363,13 @@ def LFD_NDVI(DoY, ndvi, year, plotting):
         t2_critical = t[len(t)-3]
     
     # fit a linear line over data at late time steps [t < t1_critical]
-    p3 = np.polyfit(t[t>= t2_critical], y_hat[t>= t2_critical], 1)
-
+    with warnings.catch_warnings():
+        warnings.filterwarnings('error')
+        try:
+            p3 = np.polyfit(t[t>= t2_critical], y_hat[t>= t2_critical], 1)
+        except np.RankWarning:
+            print("not enough data for polyfit function [line 369]") 
+            
     # if you have got a NaN value for above mentioned critical time, 
     # then return NaN for all outputs and quite the calculations
     if np.isnan(t2_critical):
