@@ -77,9 +77,13 @@ $$
 
 In this analysis, the `root_scalar` function of the `Optimize` sub-package of the `Python package` of `scipy` (as an alternative to the `fzero` function in `MATLAB`) was used to find a null of the above expression by changing the $t$ values.
 
-![video](./Examples/timelapse_map.mp4)
-
 Here is a time-lapse map of the onset of greening (OG) and the onset of the dormancy (OD), obtained by applying the LFD-NDVI method over MODIS NDVI data [2001-2020] for a small region in Europe, e.g. latitude 48.0-53.0 and longitude 15.0-20.0. 
+
+[![Watch the video](./Examples/screenshot_video.png)](./Examples/timelapse_map.mp4)
+
+[<img src="./Examples/timelapse_map.mp4/maxresdefault.jpg" width="50%">](./Examples/timelapse_map.mp4)
+
+[Watch the video](./Examples/timelapse_map.mp4)
 
 
 
