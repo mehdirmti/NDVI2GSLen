@@ -77,7 +77,13 @@ $$
 
 In this analysis, the `root_scalar` function of the `Optimize` sub-package of the `Python package` of `scipy` (as an alternative to the `fzero` function in `MATLAB`) was used to find a null of the above expression by changing the $t$ values.
 
-Example usage of the LFD-NDVI method can be found in [(Rahmati et al., 2023)](https://www.nature.com/articles/s43247-023-00890-7#MOESM1).
+![video](./Examples/timelapse_map.mp4)
+
+Here is a time-lapse map of the onset of greening (OG) and the onset of the dormancy (OD), obtained by applying the LFD-NDVI method over MODIS NDVI data [2001-2020] for a small region in Europe, e.g. latitude 48.0-53.0 and longitude 15.0-20.0. 
+
+
+
+A detailed example of the LFD-NDVI method can be found in [(Rahmati et al., 2023)](https://www.nature.com/articles/s43247-023-00890-7#MOESM1).
 
 ## Repository Structure
 
@@ -91,7 +97,7 @@ Example usage of the LFD-NDVI method can be found in [(Rahmati et al., 2023)](ht
 
 ## Usage
 
-No special environment is required.  
+To install the required packages, import the environment provided through the file 'environment.yml' using the following command: 'conda env create -f environment.yml'.
 
 ## License
 
